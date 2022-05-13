@@ -1,6 +1,5 @@
 package com.mvvmsourcecode.adapters;
 
-import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
@@ -42,7 +41,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     public void setUserList(ArrayList<UserModel> userModelArrayList) {
         this.mUserModelList = userModelArrayList;
         notifyDataSetChanged();

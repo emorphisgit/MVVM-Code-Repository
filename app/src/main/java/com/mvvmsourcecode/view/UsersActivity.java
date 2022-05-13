@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.mvvmsourcecode.R;
 import com.mvvmsourcecode.adapters.UserAdapter;
 import com.mvvmsourcecode.databinding.ActivityMainBinding;
@@ -48,13 +47,6 @@ public class UsersActivity extends AppCompatActivity {
         } else {
             activityMainBinding.noInternetLayout.setVisibility(View.VISIBLE);
         }
-
-        activityMainBinding.mTvTitle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
     }
 
     private void getAllUserList() {

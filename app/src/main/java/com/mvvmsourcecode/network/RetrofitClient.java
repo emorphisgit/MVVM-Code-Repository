@@ -17,7 +17,7 @@ public class RetrofitClient {
 
     private static Retrofit mRetrofit;
 
-    //Create instance of retrofit
+    //Create instance of retrofit and Added timeout connection.
     public static ApiDataService getService() {
         if (mRetrofit == null) {
             OkHttpClient.Builder httpClient = new OkHttpClient.Builder()

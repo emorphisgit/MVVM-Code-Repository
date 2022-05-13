@@ -15,8 +15,8 @@ import com.mvvmsourcecode.model.SplashModel;
 import com.mvvmsourcecode.viewmodel.SplashViewModel;
 
 public class SplashActivity extends AppCompatActivity {
-    private SplashViewModel splashViewModel;
 
+    private SplashViewModel splashViewModel;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -6,9 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.mvvmsourcecode.model.UserModel;
 import com.mvvmsourcecode.network.ApiDataService;
 import com.mvvmsourcecode.network.RetrofitClient;
-
 import java.util.ArrayList;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,7 +38,7 @@ public class UserRepository {
             }
 
             @Override
-            public void onFailure(@NonNull Call<ArrayList<UserModel>> call, Throwable t) {
+            public void onFailure(@NonNull Call<ArrayList<UserModel>> call, @NonNull Throwable t) {
                 mUserMutableLiveDataList.postValue(null);
                 errorMsg.setValue(t.getMessage());
             }
