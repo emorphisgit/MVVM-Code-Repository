@@ -10,19 +10,14 @@ import com.mvvmsourcecode.R;
 
 
 public class CustomToast extends Toast {
-    private Context context;
-    private String message;
 
-    public CustomToast(Context context, String message) {
-        super(context);
-        this.context = context;
-        this.message = message;
-        View view = LayoutInflater.from(context).inflate(R.layout.toast_custom_layout, null);
+    public CustomToast(Context aContext, String aMessage) {
+        super(aContext);
+        View view = LayoutInflater.from(aContext).inflate(R.layout.toast_custom_layout, null);
         TextView txtMsg = view.findViewById(R.id.txt_message);
-        txtMsg.setText(message);
+        txtMsg.setText(aMessage);
         setView(view);
         setDuration(Toast.LENGTH_LONG);
-
     }
 
 

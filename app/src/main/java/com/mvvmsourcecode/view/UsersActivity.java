@@ -2,14 +2,17 @@ package com.mvvmsourcecode.view;
 
 import android.os.Bundle;
 import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.mvvmsourcecode.R;
 import com.mvvmsourcecode.adapters.UserAdapter;
+import com.mvvmsourcecode.custom.CustomToast;
 import com.mvvmsourcecode.databinding.ActivityMainBinding;
 import com.mvvmsourcecode.utils.NetworkHandler;
 import com.mvvmsourcecode.viewmodel.UserViewModel;
@@ -46,6 +49,31 @@ public class UsersActivity extends AppCompatActivity {
             getAllUserList();
         } else {
             activityMainBinding.noInternetLayout.setVisibility(View.VISIBLE);
+        }
+
+
+        //For showing progress bar
+        mainViewModel.progressbarObservable.observe(this, this::handleProgressBarVisibility);
+
+        //Handle Error message from API
+        mainViewModel.mUserListErrorStr.observe(this, it -> {
+            mainViewModel.progressbarObservable.postValue(false);
+            if (it.isEmpty()) {
+                new CustomToast(UsersActivity.this, getResources().getString(R.string.no_data_found));
+            } else {
+                new CustomToast(UsersActivity.this, it);
+            }
+        });
+        //Handle Success message from API
+        mainViewModel.mUserListSuccess.observe(this, aBoolean -> mainViewModel.progressbarObservable.postValue(false));
+
+    }
+    private void handleProgressBarVisibility(Boolean progressObserve) {
+        if (progressObserve) {
+            activityMainBinding.progressBarLayout.setVisibility(View.VISIBLE);
+        } else {
+            activityMainBinding.progressBarLayout.setVisibility(View.GONE);
+
         }
     }
 

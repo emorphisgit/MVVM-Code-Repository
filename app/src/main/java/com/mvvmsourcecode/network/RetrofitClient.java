@@ -1,11 +1,6 @@
 package com.mvvmsourcecode.network;
 
 import static com.mvvmsourcecode.constant.AppConstant.BASE_URL;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.mvvmsourcecode.constant.AppConstant;
-
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;

@@ -2,6 +2,7 @@ package com.mvvmsourcecode.adapters;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,15 +42,16 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         }
     }
 
-    public void setUserList(ArrayList<UserModel> userModelArrayList) {
-        this.mUserModelList = userModelArrayList;
+    public void setUserList(ArrayList<UserModel> aUserModelArrayList) {
+        mUserModelList = aUserModelArrayList;
         notifyDataSetChanged();
     }
 
     //Create View holder and set values using binding
     static class UserViewHolder extends RecyclerView.ViewHolder {
 
-       final ItemUserListBinding mItemUserListBinding;
+        final ItemUserListBinding mItemUserListBinding;
+
         public UserViewHolder(@NonNull ItemUserListBinding aItemUserListBinding) {
             super(aItemUserListBinding.getRoot());
             this.mItemUserListBinding = aItemUserListBinding;

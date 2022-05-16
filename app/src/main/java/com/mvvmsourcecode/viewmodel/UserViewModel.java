@@ -5,6 +5,8 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.mvvmsourcecode.model.UserModel;
 import com.mvvmsourcecode.repository.UserRepository;
@@ -12,17 +14,18 @@ import com.mvvmsourcecode.repository.UserRepository;
 import java.util.ArrayList;
 
 
-public class UserViewModel extends AndroidViewModel {
+public class UserViewModel extends ViewModel {
 
-    private final UserRepository mUserListRepository;
+    public UserRepository mUserListRepository = new UserRepository();
+    public MutableLiveData<Boolean> progressbarObservable = new MutableLiveData<>();
 
-    public UserViewModel(@NonNull Application application) {
-        super(application);
-        mUserListRepository = new UserRepository();
-    }
+    public MutableLiveData<String> mUserListErrorStr = new MutableLiveData<>();
+    public MutableLiveData<Boolean> mUserListSuccess = new MutableLiveData<>();
+
 
     //Fetch Users list
     public LiveData<ArrayList<UserModel>> getAllUserList() {
-        return mUserListRepository.getUserMutableLiveDataList();
+        progressbarObservable.postValue(true);
+        return mUserListRepository.getUserMutableLiveDataList(mUserListSuccess, mUserListErrorStr);
     }
 }

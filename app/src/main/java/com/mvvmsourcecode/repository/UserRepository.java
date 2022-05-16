@@ -15,14 +15,12 @@ public class UserRepository {
 
     //this is the data that we will fetch asynchronously
     private ArrayList<UserModel> mUserList = new ArrayList<>();
-
-    //Show Error Message
-    public final MutableLiveData<String> errorMsg = new MutableLiveData<>();
-
     private final MutableLiveData<ArrayList<UserModel>> mUserMutableLiveDataList = new MutableLiveData<>();
 
+
     //call to internet and  return  MutableLiveData
-    public MutableLiveData<ArrayList<UserModel>> getUserMutableLiveDataList() {
+    public MutableLiveData<ArrayList<UserModel>> getUserMutableLiveDataList(MutableLiveData<Boolean> aUserListSuccess, MutableLiveData<String> aUserListErrorStr) {
+
         ///ini Retrofit Class
         final ApiDataService userDataService = RetrofitClient.getService();
 
@@ -32,15 +30,21 @@ public class UserRepository {
         call.enqueue(new Callback<ArrayList<UserModel>>() {
             @Override
             public void onResponse(@NonNull Call<ArrayList<UserModel>> call, @NonNull Response<ArrayList<UserModel>> response) {
-                mUserList = response.body();
-                mUserMutableLiveDataList.setValue(mUserList);
 
+                if (response.body() != null) {
+                    aUserListSuccess.setValue(true);
+                    mUserList = response.body();
+                    mUserMutableLiveDataList.setValue(mUserList);
+                } else {
+                    aUserListErrorStr.setValue(response.message());
+                }
             }
 
             @Override
             public void onFailure(@NonNull Call<ArrayList<UserModel>> call, @NonNull Throwable t) {
                 mUserMutableLiveDataList.postValue(null);
-                errorMsg.setValue(t.getMessage());
+                aUserListErrorStr.setValue(t.getMessage());
+
             }
         });
 

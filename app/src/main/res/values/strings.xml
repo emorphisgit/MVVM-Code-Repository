@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MVVM DEMO</string>
+    <string name="app_name"><u>MVVM DEMO</u></string>
 
     <!-- Strings related to project -->
     <string name="prompt_email">Email</string>
@@ -11,4 +11,5 @@
     <string name="no_internet_msg_title">Just try reloading the page or switch on the\n data and try again</string>
     <string name="no_internet_msg">No Internet. Check Your Internet Connection.</string>
     <string name="no_internet">No Internet</string>
+    <string name="no_data_found">Unable to load Users list</string>
 </resources>

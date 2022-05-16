@@ -6,7 +6,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/_7sdp"
         android:background="@color/light_grey"
         tools:context=".view.UsersActivity"
         tools:showIn="@layout/activity_main">
@@ -15,11 +14,12 @@
             android:id="@+id/mTvTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_5sdp"
             android:text="@string/app_name"
             android:textAlignment="center"
-            android:textColor="@color/title_color"
+            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/_16ssp"
+            android:padding="@dimen/_10sdp"
+            android:layout_margin="@dimen/_7sdp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,6 +45,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/progressBarLayout"
+            layout="@layout/progress_bar_layout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
